@@ -57,7 +57,7 @@ jobs:
         with:
           bun-version: 1.0.11
       - run: bun install
-      - run: bun run generate
+      - run: npm run generate
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
