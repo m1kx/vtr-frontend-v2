@@ -1,0 +1,8 @@
+{
+  "short_name": "vtr",
+  "name": "VTRPLAN",
+  "id": "/",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "icon": "/icon.png"
+}
