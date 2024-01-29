@@ -58,6 +58,11 @@ onMounted(async () => {
 pb.authStore.onChange(async () => {
   if (!is_refreshing.value)
     await refresh();
+  if (!user.value) return;
+  await pb.collection('users').subscribe(user.value.id, (data: RecordSubscription<RecordModel>) => {
+    if (user.value == null) return;
+    user.value = data.record;
+  });
 });
 
 
