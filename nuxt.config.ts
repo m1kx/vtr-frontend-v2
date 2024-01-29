@@ -6,5 +6,11 @@ export default defineNuxtConfig({
   routeRules: {
     '*': { prerender: false, ssr: false },
     '/auth/*': { prerender: false, ssr: false }
+  },
+  nitro: {
+    prerender: {
+      crawlLinks: false,
+      ignore: ['/*', '/auth/*', '*']
+    }
   }
 });
