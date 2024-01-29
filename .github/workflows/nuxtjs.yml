@@ -38,11 +38,6 @@ jobs:
           cache: npm
       - name: Setup Pages
         uses: actions/configure-pages@v4
-        with:
-          # Automatically inject router.base in your Nuxt configuration file and set
-          # target to static (https://nuxtjs.org/docs/configuration-glossary/configuration-target/).
-          #
-          # You may remove this line if you want to manage the configuration yourself.
       - name: Restore cache
         uses: actions/cache@v4
         with:
