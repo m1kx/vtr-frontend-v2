@@ -3,14 +3,4 @@ export default defineNuxtConfig({
   modules: ["@nuxt/ui"],
   devtools: { enabled: false },
   ssr: false,
-  routeRules: {
-    '*': { prerender: false, ssr: false },
-    '/auth/*': { prerender: false, ssr: false }
-  },
-  nitro: {
-    prerender: {
-      crawlLinks: false,
-      ignore: ['/*', '/auth/*', '*']
-    }
-  }
 });
