@@ -19,7 +19,7 @@ const refresh_list = async () => {
   score_list.value = data.value as ScoreItem[];
   for (let i = 0; i < score_list.value.length; i++) {
     if (!pb.authStore.model) continue;
-    if (score_list.value[i].id == pb.authStore.model.score_name) {
+    if (score_list.value[i].id == score_name.value) {
       score_list.value[i] = {
         id: score_list.value[i].id,
         score: score_list.value[i].score,
