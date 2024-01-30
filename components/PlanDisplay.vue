@@ -1,4 +1,6 @@
 <script setup lang='ts'>
+import utf8 from 'utf8';
+
 const pb = usePocketbase();
 
 const user = useUser();
@@ -23,14 +25,13 @@ const tmrw_formatted = ref([]);
 const fmt_data = () => {
   if (!pb.authStore.model) return;
   if (!user.value) return;
-  let actions_h = atob(user.value.h_hash).split("!!!");
-  let actions_m = atob(user.value.m_hash).split("!!!");
+  let actions_h = utf8.decode(atob(user.value.h_hash)).split("!!!");
+  let actions_m = utf8.decode(atob(user.value.m_hash)).split("!!!");
   let new_actions_h = [];
   let new_actions_m = [];
   for (let i = 0; i < actions_h.length; i++) {
     if (actions_h[i] == '') continue;
-    // @ts-ignore
-    const all = actions_h[i].split("|")
+    const all = actions_h[i].split("|");
     new_actions_h.push({
       subject: all[3],
       room: all[4],
@@ -39,7 +40,6 @@ const fmt_data = () => {
   }
   for (let i = 0; i < actions_m.length; i++) {
     if (actions_m[i] == '') continue;
-    // @ts-ignore
     const all = actions_m[i].split("|")
     new_actions_m.push({
       subject: all[3],

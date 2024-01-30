@@ -1,6 +1,6 @@
 <script setup lang='ts'>
 import type { FormError, FormSubmitEvent } from '@nuxt/ui/dist/runtime/types';
-import { object, string, type InferType, Schema } from 'yup';
+import { object, string, type InferType } from 'yup';
 
 const pb = usePocketbase();
 const toast = useToast();

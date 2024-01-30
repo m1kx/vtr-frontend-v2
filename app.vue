@@ -2,8 +2,6 @@
 import type { RecordModel, RecordSubscription } from 'pocketbase';
 
 const pb = usePocketbase();
-const toast = useToast();
-
 const user = useUser();
 
 const is_refreshing = ref(false);
@@ -64,42 +62,6 @@ pb.authStore.onChange(async () => {
     user.value = data.record;
   });
 });
-
-
-/*const initial_refresh = ref(false);
-
-const refresh_user = async () => {
-  if (!pb.authStore.model || is_refreshing.value) return;
-  is_refreshing.value = true;
-  await pb.collection('users').unsubscribe();
-  console.log("refresh")
-  try {
-    await pb.collection('users').authRefresh();
-  } catch (e) {
-    console.log("Error")
-    console.log(e)
-  }
-  await pb.collection('users').subscribe(pb.authStore.model.id, refresh_user);
-  user.value = pb.authStore.model;
-  is_refreshing.value = false;
-  initial_refresh.value = true;
-  return true
-}
-
-onMounted(async () => {
-  if (!pb.authStore.model) return;
-  await refresh_user();
-  await pb.collection('users').subscribe(pb.authStore.model.id, refresh_user);
-  window.addEventListener('visibilitychange', () => {
-    if (initial_refresh.value)
-      refresh_user();
-  });
-})
-pb.authStore.onChange(async () => {
-  console.log("change")
-  if (!pb.authStore.model) return;
-  await pb.collection('users').subscribe(pb.authStore.model.id, refresh_user);
-  })*/
 
 useHead({
   title: 'Bot',
